@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegisterUser;
 use Illuminate\Http\Request;
 use App\User;
+use App\Mail;
 
 class DashboardController extends Controller
 {
@@ -26,6 +28,8 @@ class DashboardController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
+
+        \Mail::to($user)->send(new RegisterUser());
 
         return view('dashboard')->with('listings', $user->listings);
     }

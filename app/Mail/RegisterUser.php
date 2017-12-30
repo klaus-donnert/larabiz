@@ -29,7 +29,6 @@ class RegisterUser extends Mailable
     public function build()
     {
         return $this->from('no_reply@donnert.us')
-            ->view('email.user.register')
-            ->text('email.user.register_text');
+            ->view('email.user.register');
     }
 }
